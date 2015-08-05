@@ -24,7 +24,6 @@
 		4E9496551B666817003E54D8 /* hmh-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E94964F1B666817003E54D8 /* hmh-logo.png */; };
 		4E9496561B666817003E54D8 /* user_student.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9496501B666817003E54D8 /* user_student.png */; };
 		4E9496581B666822003E54D8 /* email_p.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9496571B666822003E54D8 /* email_p.png */; };
-		4EB185D51B6A4D5800E92B4E /* settings_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB185D41B6A4D5800E92B4E /* settings_icon.png */; };
 		4EB185D71B6A52BE00E92B4E /* emailSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB185D61B6A52BE00E92B4E /* emailSettings.swift */; };
 		4EB690611B6A70D80063B055 /* email_icon copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB690601B6A70D80063B055 /* email_icon copy.png */; };
 		4EB690631B6B9B120063B055 /* history_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB690621B6B9B120063B055 /* history_icon.png */; };
@@ -33,26 +32,27 @@
 		4EC368651B66A76400C82148 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC368641B66A76400C82148 /* menu.png */; };
 		4EC368691B66A89400C82148 /* backbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC368681B66A89400C82148 /* backbutton.png */; };
 		4EC368731B67B96200C82148 /* viewPortfolio.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC368721B67B96200C82148 /* viewPortfolio.png */; };
-		4EC368751B67C12300C82148 /* trash_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC368741B67C12300C82148 /* trash_button.png */; };
 		4EC368771B67C9EA00C82148 /* trash_port.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC368761B67C9EA00C82148 /* trash_port.png */; };
-		4EC3687B1B67EE8300C82148 /* video_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3687A1B67EE8300C82148 /* video_icon.png */; };
 		4EC3687E1B680A7C00C82148 /* cancel_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3687C1B680A7C00C82148 /* cancel_icon.png */; };
 		4EC3687F1B680A7C00C82148 /* email_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3687D1B680A7C00C82148 /* email_icon.png */; };
 		4EC8717F1B6FC7C6007B3E3D /* addToStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8717E1B6FC7C6007B3E3D /* addToStudents.swift */; };
 		4EC871BE1B7144FC007B3E3D /* Screen Shot 2015-07-27 at 3.24.03 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC871BD1B7144FC007B3E3D /* Screen Shot 2015-07-27 at 3.24.03 PM.png */; };
 		4EC871C01B71453A007B3E3D /* Screen Shot 2015-07-27 at 3.20.44 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC871BF1B71453A007B3E3D /* Screen Shot 2015-07-27 at 3.20.44 PM.png */; };
-		4EC871CB1B723E60007B3E3D /* cameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871C11B723E60007B3E3D /* cameraController.swift */; };
-		4EC871CC1B723E60007B3E3D /* configurePortfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871C21B723E60007B3E3D /* configurePortfolio.swift */; };
-		4EC871CD1B723E60007B3E3D /* editCaptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871C31B723E60007B3E3D /* editCaptionsController.swift */; };
-		4EC871CE1B723E60007B3E3D /* imageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871C41B723E60007B3E3D /* imageViewController.swift */; };
-		4EC871CF1B723E60007B3E3D /* loginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871C51B723E60007B3E3D /* loginVC.swift */; };
-		4EC871D01B723E60007B3E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EC871C61B723E60007B3E3D /* Main.storyboard */; };
-		4EC871D11B723E60007B3E3D /* portfolioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871C71B723E60007B3E3D /* portfolioController.swift */; };
-		4EC871D21B723E60007B3E3D /* sectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871C81B723E60007B3E3D /* sectionViewController.swift */; };
-		4EC871D31B723E60007B3E3D /* selectableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871C91B723E60007B3E3D /* selectableController.swift */; };
-		4EC871D41B723E60007B3E3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871CA1B723E60007B3E3D /* ViewController.swift */; };
 		4EC871D61B7240DA007B3E3D /* showMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871D51B7240DA007B3E3D /* showMenuController.swift */; };
 		4EC871D81B7241FE007B3E3D /* sendToParentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871D71B7241FE007B3E3D /* sendToParentController.swift */; };
+		4EC871DE1B7246F3007B3E3D /* cameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871D91B7246F3007B3E3D /* cameraController.swift */; };
+		4EC871DF1B7246F3007B3E3D /* loginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871DA1B7246F3007B3E3D /* loginVC.swift */; };
+		4EC871E01B7246F3007B3E3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EC871DB1B7246F3007B3E3D /* Main.storyboard */; };
+		4EC871E11B7246F3007B3E3D /* sectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871DC1B7246F3007B3E3D /* sectionViewController.swift */; };
+		4EC871E21B7246F3007B3E3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871DD1B7246F3007B3E3D /* ViewController.swift */; };
+		4EC871E71B724B29007B3E3D /* configurePortfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871E31B724B29007B3E3D /* configurePortfolio.swift */; };
+		4EC871E81B724B29007B3E3D /* editCaptionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871E41B724B29007B3E3D /* editCaptionsController.swift */; };
+		4EC871E91B724B29007B3E3D /* portfolioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871E51B724B29007B3E3D /* portfolioController.swift */; };
+		4EC871EA1B724B29007B3E3D /* selectableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871E61B724B29007B3E3D /* selectableController.swift */; };
+		4EC871ED1B724B6E007B3E3D /* settings_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC871EB1B724B6E007B3E3D /* settings_icon.png */; };
+		4EC871EE1B724B6E007B3E3D /* trash_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC871EC1B724B6E007B3E3D /* trash_button.png */; };
+		4EC871F01B724BFF007B3E3D /* video_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC871EF1B724BFF007B3E3D /* video_icon.png */; };
+		4EC871F21B724C0E007B3E3D /* imageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC871F11B724C0E007B3E3D /* imageViewController.swift */; };
 		4EFB830C1B69214100738D57 /* emailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFB830B1B69214100738D57 /* emailController.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,7 +111,6 @@
 		4E94964F1B666817003E54D8 /* hmh-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hmh-logo.png"; path = "../../../Downloads/Images for App/hmh-logo.png"; sourceTree = "<group>"; };
 		4E9496501B666817003E54D8 /* user_student.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_student.png; path = "../../../Downloads/Images for App/user_student.png"; sourceTree = "<group>"; };
 		4E9496571B666822003E54D8 /* email_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = email_p.png; path = ../../../Downloads/email_p.png; sourceTree = "<group>"; };
-		4EB185D41B6A4D5800E92B4E /* settings_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings_icon.png; path = ../../settings_icon.png; sourceTree = "<group>"; };
 		4EB185D61B6A52BE00E92B4E /* emailSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = emailSettings.swift; sourceTree = "<group>"; };
 		4EB690601B6A70D80063B055 /* email_icon copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "email_icon copy.png"; path = "../../../Downloads/email_icon copy.png"; sourceTree = "<group>"; };
 		4EB690621B6B9B120063B055 /* history_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = history_icon.png; path = ../../../Downloads/history_icon.png; sourceTree = "<group>"; };
@@ -120,26 +119,27 @@
 		4EC368641B66A76400C82148 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = ../../../Downloads/menu.png; sourceTree = "<group>"; };
 		4EC368681B66A89400C82148 /* backbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backbutton.png; path = ../../../Downloads/backbutton.png; sourceTree = "<group>"; };
 		4EC368721B67B96200C82148 /* viewPortfolio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = viewPortfolio.png; path = ../../../Downloads/viewPortfolio.png; sourceTree = "<group>"; };
-		4EC368741B67C12300C82148 /* trash_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash_button.png; path = ../../trash_button.png; sourceTree = "<group>"; };
 		4EC368761B67C9EA00C82148 /* trash_port.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trash_port.png; path = ../../../Downloads/trash_port.png; sourceTree = "<group>"; };
-		4EC3687A1B67EE8300C82148 /* video_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_icon.png; path = ../../video_icon.png; sourceTree = "<group>"; };
 		4EC3687C1B680A7C00C82148 /* cancel_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cancel_icon.png; path = ../../../Downloads/cancel_icon.png; sourceTree = "<group>"; };
 		4EC3687D1B680A7C00C82148 /* email_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = email_icon.png; path = ../../../Downloads/email_icon.png; sourceTree = "<group>"; };
 		4EC8717E1B6FC7C6007B3E3D /* addToStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addToStudents.swift; sourceTree = "<group>"; };
 		4EC871BD1B7144FC007B3E3D /* Screen Shot 2015-07-27 at 3.24.03 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2015-07-27 at 3.24.03 PM.png"; sourceTree = SOURCE_ROOT; };
 		4EC871BF1B71453A007B3E3D /* Screen Shot 2015-07-27 at 3.20.44 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2015-07-27 at 3.20.44 PM.png"; sourceTree = SOURCE_ROOT; };
-		4EC871C11B723E60007B3E3D /* cameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = cameraController.swift; path = "../../SampleApp/Student Video Portfolio/cameraController.swift"; sourceTree = "<group>"; };
-		4EC871C21B723E60007B3E3D /* configurePortfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = configurePortfolio.swift; path = "../../SampleApp/Student Video Portfolio/configurePortfolio.swift"; sourceTree = "<group>"; };
-		4EC871C31B723E60007B3E3D /* editCaptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = editCaptionsController.swift; path = "../../SampleApp/Student Video Portfolio/editCaptionsController.swift"; sourceTree = "<group>"; };
-		4EC871C41B723E60007B3E3D /* imageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = imageViewController.swift; path = "../../SampleApp/Student Video Portfolio/imageViewController.swift"; sourceTree = "<group>"; };
-		4EC871C51B723E60007B3E3D /* loginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = loginVC.swift; path = "../../SampleApp/Student Video Portfolio/loginVC.swift"; sourceTree = "<group>"; };
-		4EC871C61B723E60007B3E3D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "../../SampleApp/Student Video Portfolio/Main.storyboard"; sourceTree = "<group>"; };
-		4EC871C71B723E60007B3E3D /* portfolioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = portfolioController.swift; path = "../../SampleApp/Student Video Portfolio/portfolioController.swift"; sourceTree = "<group>"; };
-		4EC871C81B723E60007B3E3D /* sectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = sectionViewController.swift; path = "../../SampleApp/Student Video Portfolio/sectionViewController.swift"; sourceTree = "<group>"; };
-		4EC871C91B723E60007B3E3D /* selectableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = selectableController.swift; path = "../../SampleApp/Student Video Portfolio/selectableController.swift"; sourceTree = "<group>"; };
-		4EC871CA1B723E60007B3E3D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "../../SampleApp/Student Video Portfolio/ViewController.swift"; sourceTree = "<group>"; };
 		4EC871D51B7240DA007B3E3D /* showMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showMenuController.swift; sourceTree = "<group>"; };
 		4EC871D71B7241FE007B3E3D /* sendToParentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sendToParentController.swift; sourceTree = "<group>"; };
+		4EC871D91B7246F3007B3E3D /* cameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraController.swift; sourceTree = "<group>"; };
+		4EC871DA1B7246F3007B3E3D /* loginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginVC.swift; sourceTree = "<group>"; };
+		4EC871DB1B7246F3007B3E3D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4EC871DC1B7246F3007B3E3D /* sectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sectionViewController.swift; sourceTree = "<group>"; };
+		4EC871DD1B7246F3007B3E3D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4EC871E31B724B29007B3E3D /* configurePortfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configurePortfolio.swift; sourceTree = "<group>"; };
+		4EC871E41B724B29007B3E3D /* editCaptionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editCaptionsController.swift; sourceTree = "<group>"; };
+		4EC871E51B724B29007B3E3D /* portfolioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = portfolioController.swift; sourceTree = "<group>"; };
+		4EC871E61B724B29007B3E3D /* selectableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = selectableController.swift; sourceTree = "<group>"; };
+		4EC871EB1B724B6E007B3E3D /* settings_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_icon.png; sourceTree = SOURCE_ROOT; };
+		4EC871EC1B724B6E007B3E3D /* trash_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash_button.png; sourceTree = SOURCE_ROOT; };
+		4EC871EF1B724BFF007B3E3D /* video_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_icon.png; sourceTree = SOURCE_ROOT; };
+		4EC871F11B724C0E007B3E3D /* imageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageViewController.swift; sourceTree = "<group>"; };
 		4EFB830B1B69214100738D57 /* emailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = emailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,23 +194,23 @@
 			children = (
 				4E93FC051B66838100A4EFFA /* Info.plist */,
 				4E93FC131B66945400A4EFFA /* AppDelegate.swift */,
+				4EC871DB1B7246F3007B3E3D /* Main.storyboard */,
 				4E93FC101B6693A300A4EFFA /* Student_Video_Portfolio.xcdatamodeld */,
-				4EC871C61B723E60007B3E3D /* Main.storyboard */,
-				4EC871C51B723E60007B3E3D /* loginVC.swift */,
-				4EC871C81B723E60007B3E3D /* sectionViewController.swift */,
-				4EC871CA1B723E60007B3E3D /* ViewController.swift */,
+				4EC871DA1B7246F3007B3E3D /* loginVC.swift */,
+				4EC871DC1B7246F3007B3E3D /* sectionViewController.swift */,
+				4EC871DD1B7246F3007B3E3D /* ViewController.swift */,
 				4EC871D51B7240DA007B3E3D /* showMenuController.swift */,
 				4EB185D61B6A52BE00E92B4E /* emailSettings.swift */,
 				4EB690641B6B9E360063B055 /* viewVideoHistory.swift */,
 				4EB690661B6BCE580063B055 /* viewVideoPlaying.swift */,
-				4EC871C11B723E60007B3E3D /* cameraController.swift */,
-				4EC871C41B723E60007B3E3D /* imageViewController.swift */,
+				4EC871D91B7246F3007B3E3D /* cameraController.swift */,
+				4EC871F11B724C0E007B3E3D /* imageViewController.swift */,
 				4E6D0B0D1B6C025100D27418 /* addPortfolioOptions.swift */,
 				4EC8717E1B6FC7C6007B3E3D /* addToStudents.swift */,
-				4EC871C71B723E60007B3E3D /* portfolioController.swift */,
-				4EC871C21B723E60007B3E3D /* configurePortfolio.swift */,
-				4EC871C31B723E60007B3E3D /* editCaptionsController.swift */,
-				4EC871C91B723E60007B3E3D /* selectableController.swift */,
+				4EC871E31B724B29007B3E3D /* configurePortfolio.swift */,
+				4EC871E41B724B29007B3E3D /* editCaptionsController.swift */,
+				4EC871E51B724B29007B3E3D /* portfolioController.swift */,
+				4EC871E61B724B29007B3E3D /* selectableController.swift */,
 				4EC871D71B7241FE007B3E3D /* sendToParentController.swift */,
 				4EFB830B1B69214100738D57 /* emailController.swift */,
 				4E6D0B0F1B6F91E900D27418 /* showAddressBook.swift */,
@@ -219,9 +219,9 @@
 				4EC3687D1B680A7C00C82148 /* email_icon.png */,
 				4EB690621B6B9B120063B055 /* history_icon.png */,
 				4EB690601B6A70D80063B055 /* email_icon copy.png */,
-				4EC368741B67C12300C82148 /* trash_button.png */,
-				4EB185D41B6A4D5800E92B4E /* settings_icon.png */,
-				4EC3687A1B67EE8300C82148 /* video_icon.png */,
+				4EC871EB1B724B6E007B3E3D /* settings_icon.png */,
+				4EC871EC1B724B6E007B3E3D /* trash_button.png */,
+				4EC871EF1B724BFF007B3E3D /* video_icon.png */,
 				4E9496501B666817003E54D8 /* user_student.png */,
 				4E6D0B0B1B6C019E00D27418 /* submit_icon.png */,
 				4EC368721B67B96200C82148 /* viewPortfolio.png */,
@@ -366,13 +366,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EC871F01B724BFF007B3E3D /* video_icon.png in Resources */,
 				4E9496521B666817003E54D8 /* bulletin.png in Resources */,
-				4EC3687B1B67EE8300C82148 /* video_icon.png in Resources */,
+				4EC871ED1B724B6E007B3E3D /* settings_icon.png in Resources */,
 				4EC3687E1B680A7C00C82148 /* cancel_icon.png in Resources */,
 				4EC871BE1B7144FC007B3E3D /* Screen Shot 2015-07-27 at 3.24.03 PM.png in Resources */,
 				4E9496531B666817003E54D8 /* camera.png in Resources */,
-				4EC871D01B723E60007B3E3D /* Main.storyboard in Resources */,
 				4EC368771B67C9EA00C82148 /* trash_port.png in Resources */,
+				4EC871E01B7246F3007B3E3D /* Main.storyboard in Resources */,
 				4EC368691B66A89400C82148 /* backbutton.png in Resources */,
 				4E9496541B666817003E54D8 /* chalk.jpg in Resources */,
 				4EC368651B66A76400C82148 /* menu.png in Resources */,
@@ -381,14 +382,13 @@
 				4E9496551B666817003E54D8 /* hmh-logo.png in Resources */,
 				4E9496561B666817003E54D8 /* user_student.png in Resources */,
 				4E6D0B0C1B6C019E00D27418 /* submit_icon.png in Resources */,
+				4EC871EE1B724B6E007B3E3D /* trash_button.png in Resources */,
 				4E93FC161B669C7600A4EFFA /* image_trash.png in Resources */,
 				4EB690611B6A70D80063B055 /* email_icon copy.png in Resources */,
 				4E9495F91B6662A7003E54D8 /* LaunchScreen.storyboard in Resources */,
 				4EC871C01B71453A007B3E3D /* Screen Shot 2015-07-27 at 3.20.44 PM.png in Resources */,
 				4EB690631B6B9B120063B055 /* history_icon.png in Resources */,
-				4EC368751B67C12300C82148 /* trash_button.png in Resources */,
 				4E9496511B666817003E54D8 /* blackboard.jpg in Resources */,
-				4EB185D51B6A4D5800E92B4E /* settings_icon.png in Resources */,
 				4E9496581B666822003E54D8 /* email_p.png in Resources */,
 				4E9495F61B6662A7003E54D8 /* Assets.xcassets in Resources */,
 			);
@@ -415,26 +415,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EC871D41B723E60007B3E3D /* ViewController.swift in Sources */,
-				4EC871CC1B723E60007B3E3D /* configurePortfolio.swift in Sources */,
-				4EC871CF1B723E60007B3E3D /* loginVC.swift in Sources */,
+				4EC871E71B724B29007B3E3D /* configurePortfolio.swift in Sources */,
+				4EC871DF1B7246F3007B3E3D /* loginVC.swift in Sources */,
 				4EB690651B6B9E360063B055 /* viewVideoHistory.swift in Sources */,
-				4EC871CB1B723E60007B3E3D /* cameraController.swift in Sources */,
+				4EC871F21B724C0E007B3E3D /* imageViewController.swift in Sources */,
+				4EC871E21B7246F3007B3E3D /* ViewController.swift in Sources */,
 				4E6D0B101B6F91E900D27418 /* showAddressBook.swift in Sources */,
-				4EC871D31B723E60007B3E3D /* selectableController.swift in Sources */,
-				4EC871D11B723E60007B3E3D /* portfolioController.swift in Sources */,
+				4EC871E91B724B29007B3E3D /* portfolioController.swift in Sources */,
+				4EC871DE1B7246F3007B3E3D /* cameraController.swift in Sources */,
 				4EC8717F1B6FC7C6007B3E3D /* addToStudents.swift in Sources */,
 				4EB690671B6BCE580063B055 /* viewVideoPlaying.swift in Sources */,
 				4E93FC121B6693A300A4EFFA /* Student_Video_Portfolio.xcdatamodeld in Sources */,
-				4EC871D21B723E60007B3E3D /* sectionViewController.swift in Sources */,
+				4EC871EA1B724B29007B3E3D /* selectableController.swift in Sources */,
+				4EC871E81B724B29007B3E3D /* editCaptionsController.swift in Sources */,
 				4E6D0B0E1B6C025100D27418 /* addPortfolioOptions.swift in Sources */,
 				4EB185D71B6A52BE00E92B4E /* emailSettings.swift in Sources */,
 				4EC871D81B7241FE007B3E3D /* sendToParentController.swift in Sources */,
 				4E93FC141B66945400A4EFFA /* AppDelegate.swift in Sources */,
 				4EFB830C1B69214100738D57 /* emailController.swift in Sources */,
-				4EC871CE1B723E60007B3E3D /* imageViewController.swift in Sources */,
-				4EC871CD1B723E60007B3E3D /* editCaptionsController.swift in Sources */,
 				4EC871D61B7240DA007B3E3D /* showMenuController.swift in Sources */,
+				4EC871E11B7246F3007B3E3D /* sectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
