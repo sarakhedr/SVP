@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B75049A5EB98169B8C2202F0BEFBC8E1771D53B3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B75049A5EB98169B8C2202F0BEFBC8E1771D53B3" : 0,
+    "DEFE651F319E61EBAD2BC385DAFE8146690CBF57" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "04644624-BABF-48F5-9CF6-F8D4901A1A62",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B75049A5EB98169B8C2202F0BEFBC8E1771D53B3" : "Sample-Application\/",
+    "DEFE651F319E61EBAD2BC385DAFE8146690CBF57" : "SampleApp\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Student Video Portfolio",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Student Video Portfolio.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sarakhedr\/Sample-Application.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B75049A5EB98169B8C2202F0BEFBC8E1771D53B3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sarakhedr\/SampleApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DEFE651F319E61EBAD2BC385DAFE8146690CBF57"
+    }
+  ]
+}
