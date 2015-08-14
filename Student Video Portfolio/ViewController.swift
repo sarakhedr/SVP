@@ -12,6 +12,7 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
     @IBOutlet var appsTableView : UITableView!
     @IBOutlet var options : UIView!
     
@@ -20,7 +21,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var username:String = ""
     var password:String = ""
     var student_name:String = ""
+    var access_token:String = ""
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var tagID:Int = 0
     
     
     override func viewDidLoad() {
@@ -50,7 +53,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func storeCurrentUser() { //stores the current user information, so common information does not need to continually 
                               // be passed
-        print("Trying to add \(self.student_name) to CoreData")
         let fetchRequest = NSFetchRequest(entityName: "CurrentUser")
         let fetchResults = try!self.managedObjectContext.executeFetchRequest(fetchRequest) as! [CurrentUser]
         for (var i=0; i<fetchResults.count; i++) {
@@ -61,11 +63,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         currentUser.password = self.password
         currentUser.section = self.section_id
         currentUser.name = self.student_name
+        currentUser.tag = Float(self.tagID)
         try!self.managedObjectContext.save()
     }
+
     
-    func getStudentName(access_token:String, refId:String) {
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://sandbox.api.hmhco.com/v1/students/\(refId)")!)
+    func getStudents(access_token:String) {
+        let index = advance(self.section_id.startIndex, self.section_id.characters.count-1)
+        let section_id = self.section_id.substringToIndex(index)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://ec2-54-144-153-235.compute-1.amazonaws.com/v2/rosters/\(section_id)/students")!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "GET"
         request.addValue("d1b1908f94fb999286a1e9b7f756981d", forHTTPHeaderField: "Vnd-HMH-Api-Key")
@@ -73,48 +79,80 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
-            let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
-            let name_json1 = json["name"] as! NSDictionary
-            let name_json2 = name_json1["actualNameOfRecord"] as! NSDictionary
-            if let name:String = name_json2["fullName"] as? String {
-                self.student_names.append(name)
+            if let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary {
+                let students = json["students"] as! Dictionary<String, AnyObject>
+                let student = students["student"] as! NSArray
+                for (var i=0; i<student.count; i++) {
+                    var nameJSON = student[i]["name"] as! Dictionary<String, AnyObject>
+                    let name:String = (nameJSON["given_name"] as! String) + " " + (nameJSON["family_name"] as! String)
+                    self.student_names.append(name)
+                    
+                }
                 dispatch_async(dispatch_get_main_queue(), {
                     self.appsTableView!.reloadData()
                 })
             }
+
         })
         
         task!.resume()
     }
     
-    func getStudents(access_token: String) {
-        print("Do you get the student-section associations?")
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://sandbox.api.hmhco.com/v1/studentSectionAssociations")!)
+    func makeTag() {
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://sandbox.api.hmhco.com/v1/tags")!)
         let session = NSURLSession.sharedSession()
-        request.HTTPMethod = "GET"
+        request.HTTPMethod = "POST"
         request.addValue("d1b1908f94fb999286a1e9b7f756981d", forHTTPHeaderField: "Vnd-HMH-Api-Key")
-        request.addValue("\(access_token)", forHTTPHeaderField: "Authorization")
+        request.addValue("\(self.access_token)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let json = [ "name": self.student_name ]
+        let jsonData = try! NSJSONSerialization.dataWithJSONObject(json, options: .PrettyPrinted)
+        request.HTTPBody = jsonData
         
         let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
-            print(response)
-            let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSArray
-            for var index = 0; index < json.count; index++ {
-                print(json[index])
-                print("The section ID is \(self.section_id)")
-                if let student:String = json[Int(index)]["studentRefId"] as? String {
-                    
-                    if json[Int(index)]["sectionRefId"] as! String == self.section_id {
-                        print("Do you send the student off?")
-                        self.getStudentName(access_token, refId: student)
-                    }
-                }
+            if let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary {
+                self.checkTag()
             }
         })
         
         task!.resume()
     }
     
+    func checkTag() {
+        dispatch_async(dispatch_get_main_queue(), {
+            let myIndicator:UIActivityIndicatorView = UIActivityIndicatorView (activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+            myIndicator.center = self.view.center
+            self.view.addSubview(myIndicator)
+            myIndicator.bringSubviewToFront(self.view)
+            myIndicator.startAnimating()
+        })
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://sandbox.api.hmhco.com/v1/tags")!)
+        let session = NSURLSession.sharedSession()
+        request.HTTPMethod = "GET"
+        request.addValue("d1b1908f94fb999286a1e9b7f756981d", forHTTPHeaderField: "Vnd-HMH-Api-Key")
+        request.addValue("\(self.access_token)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
+            if let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSArray {
+                for (var i=0; i<json.count; i++) {
+                    if (json[i]["name"] as! String == self.student_name) {
+                        self.tagID = json[i]["id"] as! Int
+                    }
+                }
+                self.performSegueWithIdentifier("showMenuSegue", sender: self)
+                self.storeCurrentUser()
+            }
+        })
+        
+        task!.resume()
+
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.student_name = self.student_names[indexPath.row]
+        self.makeTag()
+    }
     
     let MenuSegueIdentifier = "showMenuSegue"
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -122,20 +160,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let navController = segue.destinationViewController as! UINavigationController
             if let destination = navController.topViewController as? showMenuController {
                 if let nameIndex = self.appsTableView.indexPathForSelectedRow?.row {
-                    self.student_name = self.student_names[nameIndex]
-                    self.storeCurrentUser()
                     destination.name = self.student_names[nameIndex]
                 }
             }
         }
     }
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(self.student_names.count)
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenHeight = screenSize.height
         let numCells = Int(screenHeight/44)
-        //print(numCells)
         var num:Int = self.student_names.count
         if self.student_names.count < numCells {
             num = numCells
@@ -177,7 +212,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func getSIF() {
-        print("Do you get here?")
         let request = NSMutableURLRequest(URL: NSURL(string: "http://sandbox.api.hmhco.com/v1/sample_token?client_id=2e94fbac-d2ae-4afe-9a6a-812ab51c40c7.hmhco.com&grant_type=password&username=\(self.username)&password=\(self.password)")!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
@@ -185,11 +219,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         request.addValue("d1b1908f94fb999286a1e9b7f756981d", forHTTPHeaderField: "Vnd-HMH-Api-Key")
         
         let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
-            print("\(response)")
             let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
-            if let access_token: NSString = json["access_token"] as? NSString {
-                self.getStudents(access_token as String)
-            }
+            let access_token: String = json["access_token"] as! String
+            self.access_token = access_token as String
+            self.getStudents(access_token as String)
         })
         task!.resume()
     }

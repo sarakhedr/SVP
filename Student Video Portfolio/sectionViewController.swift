@@ -12,6 +12,7 @@ class sectionViewController: UIViewController, UITableViewDataSource, UITableVie
     var password:String = ""
     var refId:String  = ""
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var access_token:String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class sectionViewController: UIViewController, UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    
     func getInfoFromCore() {        //this function allows you to go back from any page and make requests with stored data
         let fetchRequest = NSFetchRequest(entityName: "CurrentUser")
         let fetchResults = try!self.managedObjectContext.executeFetchRequest(fetchRequest) as! [CurrentUser]
@@ -38,20 +40,25 @@ class sectionViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
-    
-    func getSectionName(access_token:String, refId:String) {
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://sandbox.api.hmhco.com/v1/sections/\(refId)")!)
+    func getSections(access_token:String) {
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://ec2-54-144-153-235.compute-1.amazonaws.com/v2/staffPersons/\(self.refId)/rosters")!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "GET"
         request.addValue("d1b1908f94fb999286a1e9b7f756981d", forHTTPHeaderField: "Vnd-HMH-Api-Key")
         request.addValue("\(access_token)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
         let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
             print(response)
-            let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
-            self.section_names.append(json["longName"] as! String)
-            self.section_ids.append(json["refId"] as! String)
+            print("How about here?")
+            let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
+            let rosters = json["rosters"] as! Dictionary<String, AnyObject>
+            let roster = rosters["roster"] as! NSArray
+            for (var i=0; i<roster.count; i++) {
+                self.section_ids.append(roster[i]["@ref_id"] as! String)
+                self.section_names.append(roster[i]["courseTitle"] as! String)
+            }
             dispatch_async(dispatch_get_main_queue(), {
                 self.appsTableView!.reloadData()
             })
@@ -60,28 +67,6 @@ class sectionViewController: UIViewController, UITableViewDataSource, UITableVie
         task!.resume()
     }
     
-    func getSections(access_token: String) {
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://sandbox.api.hmhco.com/v1/staffSectionAssociations")!)
-        let session = NSURLSession.sharedSession()
-        request.HTTPMethod = "GET"
-        request.addValue("d1b1908f94fb999286a1e9b7f756981d", forHTTPHeaderField: "Vnd-HMH-Api-Key")
-        request.addValue("\(access_token)", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
-            //print("\(response)")
-            let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSArray
-            for var index = 0; index < json.count; index++ {
-                if let section:String = json[Int(index)]["sectionRefId"] as? String {
-                    if json[Int(index)]["staffPersonRefId"] as! String == self.refId {
-                        self.getSectionName(access_token, refId: section)
-                    }
-                }
-            }
-        })
-
-        task!.resume()
-    }
     
     let MenuSegueIdentifier = "studentSegue"
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -164,13 +149,25 @@ class sectionViewController: UIViewController, UITableViewDataSource, UITableVie
         request.addValue("d1b1908f94fb999286a1e9b7f756981d", forHTTPHeaderField: "Vnd-HMH-Api-Key")
         
         let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
-            //print("\(response)")
-            let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
-            if let access_token: NSString = json["access_token"] as? NSString {
-                self.refId = json["ref_id"] as! String
-                
-                self.getSections(access_token as String)
+            do {
+                if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary {
+                    if let access_token: NSString = json["access_token"] as? NSString {
+                        //let refId = json["ref_id"] as! String
+                        self.refId = json["ref_id"] as! String
+                        
+                        self.getSections(access_token as String)
+                    }
+                }
+                else {
+                    print("Something went wrong with getting the SIF token.")
+                    self.getSIF()
+                }
             }
+            catch {
+                print("Something went wrong!")
+                self.getSIF()
+            }
+
         })
         task!.resume()
     }

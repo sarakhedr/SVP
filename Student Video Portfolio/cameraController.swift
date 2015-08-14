@@ -20,6 +20,7 @@ class CurrentUser: NSManagedObject {
     @NSManaged var username:String
     @NSManaged var password:String
     @NSManaged var section:String
+    @NSManaged var tag:Float
 }
 
 @objc(Email)

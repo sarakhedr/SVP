@@ -91,7 +91,6 @@ class emailSettings: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selected = self.email_list[indexPath.row]
         self.index = indexPath.row
-        print(self.index)
         deleteButton.hidden = false
         
     }
@@ -109,7 +108,6 @@ class emailSettings: UIViewController, UITableViewDataSource, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         deleteButton.hidden = true
-        print(self.student)
         getFromCore()
 
     }

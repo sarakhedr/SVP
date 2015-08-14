@@ -19,9 +19,10 @@ class viewVideoHistory: UIViewController, UITableViewDataSource, UITableViewDele
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var student:String = ""
     var username:String = ""
-    var section:String = ""
+    var password:String = ""
     var videos:Array<Array<String>> = []
     var link:String = ""
+    var tagID:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,49 @@ class viewVideoHistory: UIViewController, UITableViewDataSource, UITableViewDele
         // Dispose of any resources that can be recreated.
     }
     
+    func getVideos(access_token:String) {
+        let query = "\([String(self.tagID).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!])"
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://sandbox.api.hmhco.com/v1/documents?filter_tags=\(query)")!)
+        print(request)
+        let session = NSURLSession.sharedSession()
+        request.HTTPMethod = "GET"
+        request.addValue("d1b1908f94fb999286a1e9b7f756981d", forHTTPHeaderField: "Vnd-HMH-Api-Key")
+        request.addValue("\(access_token)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
+            if let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSArray {
+                for (var i=0; i<json.count; i++) {
+                    let video:Array<String> = [json[i]["title"] as! String, json[i]["note_html"] as! String, json[i]["link_url"] as! String]
+                    self.videos.append(video)
+                }
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.videoHistory!.reloadData()
+            })
+        })
+        task!.resume()
+    }
+    
+    func getSIF() {
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://sandbox.api.hmhco.com/v1/sample_token?client_id=2e94fbac-d2ae-4afe-9a6a-812ab51c40c7.hmhco.com&grant_type=password&username=\(self.username)&password=\(self.password)")!)
+        let session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.addValue("d1b1908f94fb999286a1e9b7f756981d", forHTTPHeaderField: "Vnd-HMH-Api-Key")
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
+            print(response)
+            let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
+            let access_token: String = json["access_token"] as! String
+            self.getVideos(access_token)
+        })
+        task!.resume()
+    }
+    
+    
+    
+    
     func getInfoFromCore() {
         //gets the username of the person logged in
         let fetchRequest = NSFetchRequest(entityName: "CurrentUser")
@@ -40,25 +84,14 @@ class viewVideoHistory: UIViewController, UITableViewDataSource, UITableViewDele
         for (var i=0; i<fetchResults.count; i++) {
             if (fetchResults[i].section != "") {
                 self.username = fetchResults[i].username
-                self.section = fetchResults[i].section
                 self.student = fetchResults[i].name
+                self.tagID = Int(fetchResults[i].tag)
+                self.password = fetchResults[i].password
             }
         }
         
-        //gets all videos for current user and section
-        let fetchRequest1 = NSFetchRequest(entityName: "Video")
-        let fetchResults1 = try!self.managedObjectContext.executeFetchRequest(fetchRequest1) as! [Video]
-        for (var i=0; i<fetchResults1.count; i++) {
-            if (fetchResults1[i].username == self.username && fetchResults1[i].section == self.section) {
-                videos.append([fetchResults1[i].student, fetchResults1[i].date, fetchResults1[i].video])
-                
-            }
-        }
+        self.getSIF()
         
-        //reload table
-        dispatch_async(dispatch_get_main_queue(), {
-            self.videoHistory!.reloadData()
-        })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,6 +110,7 @@ class viewVideoHistory: UIViewController, UITableViewDataSource, UITableViewDele
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.link = videos[indexPath.row][2]
+        print(videos)
         self.performSegueWithIdentifier("playVideo", sender: self)
     }
     

@@ -16,7 +16,7 @@ class viewVideoPlaying: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.link)
+        print("THE LINK IS \(self.link)")
         self.view.backgroundColor = UIColor.blackColor()
         let url:NSURL = NSURL(string:self.link)!
         self.moviePlayer = MPMoviePlayerController(contentURL: url)

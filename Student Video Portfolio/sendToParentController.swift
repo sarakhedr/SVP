@@ -60,9 +60,24 @@ extension UIImage {
 
 class sendToParentController: UIViewController {
     var moviePlayer:MPMoviePlayerController!
-
-    @IBOutlet weak var progressBar: UIProgressView!
     
+    @IBOutlet weak var progressView: UIView!
+    @IBOutlet weak var nameView: UIView!
+    
+    @IBAction func submitName(sender: AnyObject) {
+        print("Do you get here?")
+        self.videoName = self.nameText.text!
+        self.nameView.hidden = true
+        self.progressView.hidden = false
+        self.activityIndicator.startAnimating()
+        login()
+        NSTimer.scheduledTimerWithTimeInterval(80, target: self, selector: "getVideo:", userInfo: self, repeats: false)
+
+    }
+    
+    @IBOutlet weak var nameText: UITextField!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var key:String = ""
     var token:String = ""
     var student:String = ""
@@ -72,27 +87,17 @@ class sendToParentController: UIViewController {
     var time:Int = 0 //keeps track of time in video
     var count:Int = 0 //keeps track of index
     var dictionary:Array<Array<String>> = []
-    var activityIndicator:UIActivityIndicatorView? = nil
     var link:String = ""
+    var videoName:String = ""
     
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    
-    var counter:Int = 0 {
-        didSet {
-            let fractionalProgress = Float(counter) / 100.0
-            let animated = counter != 0
-            progressBar.setProgress(fractionalProgress, animated: animated)
-        }
-    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        login()
-        progressBar.setProgress(0, animated: true)
-        NSTimer.scheduledTimerWithTimeInterval(80, target: self, selector: "getVideo:", userInfo: self, repeats: false)
+        self.progressView.hidden = true
     }
     
 
@@ -116,8 +121,25 @@ class sendToParentController: UIViewController {
             dispatch_async(dispatch_get_main_queue()) {
                 self.makeVideo()
                 self.uploadMusic()
+                self.getTopUps()
             }
             self.getPhotos()
+        })
+        
+        task!.resume()
+    }
+    
+    func getTopUps() {
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://uapi-f1.picovico.com/v2.1/me")!)
+        let session = NSURLSession.sharedSession()
+        request.HTTPMethod = "GET"
+        request.addValue("\(self.key)", forHTTPHeaderField: "X-Access-Key")
+        request.addValue("\(self.token)", forHTTPHeaderField: "X-Access-Token")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
+            let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
+            print(json)
+            
         })
         
         task!.resume()
@@ -264,6 +286,7 @@ class sendToParentController: UIViewController {
         let url:NSURL = NSURL(string:"http://uapi-f1.picovico.com/v2.1/v/\(self.video_id)/A.mp4")!
         self.link = "http://uapi-f1.picovico.com/v2.1/v/\(self.video_id)/A.mp4"
         self.moviePlayer = MPMoviePlayerController(contentURL: url)
+        self.makeNotification()
         if let player = self.moviePlayer {
             player.view.frame = CGRect(x: 0, y: 50, width: self.view.frame.size.width, height: self.view.frame.size.height/2 + 50)
             player.view.sizeToFit()
@@ -272,10 +295,10 @@ class sendToParentController: UIViewController {
             player.repeatMode = MPMovieRepeatMode.One;
             self.view.addSubview(player.view)
             player.play()
+            
         }
       
     }
-    
     
     @IBAction func cancelVideo(sender: UIBarButtonItem) {
         self.performSegueWithIdentifier("cancelVideo", sender: self)
@@ -294,6 +317,7 @@ class sendToParentController: UIViewController {
             if let destination = navController.topViewController as? emailController {
                 destination.student = self.student
                 destination.link = self.link
+                destination.videoName = self.videoName
             }
         }
     }
@@ -302,6 +326,17 @@ class sendToParentController: UIViewController {
     func emailParent(sender: UIBarButtonItem) {
         self.performSegueWithIdentifier("emailParent", sender: self)
     }
+    
+    func makeNotification() {
+        //make a notification
+        let notification = UILocalNotification()
+        notification.alertBody = "Your video has been created." // text that will be displayed in the notification
+        notification.alertAction = "Open App" // text that is displayed after "slide to..." on the lock screen - defaults to "slide to view"
+        notification.fireDate = NSDate(timeIntervalSinceNow: 5) // todo item due date (when notification will be fired)
+        notification.soundName = UILocalNotificationDefaultSoundName // play default sound
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
+
     
     
 }

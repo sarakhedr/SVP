@@ -4,6 +4,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tag" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Email" representedClassName="Email" syncable="YES">
@@ -26,7 +27,7 @@
         <attribute name="video" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CurrentUser" positionX="-45" positionY="18" width="128" height="105"/>
+        <element name="CurrentUser" positionX="-45" positionY="18" width="128" height="120"/>
         <element name="Email" positionX="-54" positionY="27" width="128" height="90"/>
         <element name="Image" positionX="-54" positionY="0" width="128" height="75"/>
         <element name="Person" positionX="-63" positionY="-18" width="128" height="60"/>

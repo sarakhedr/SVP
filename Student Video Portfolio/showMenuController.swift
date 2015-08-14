@@ -97,10 +97,8 @@ class showMenuController: UIViewController {
         let alert = UIAlertController(title: "Deleting Portfolio", message: "Are you sure you want to delete all the pictures in the portfolio? You will not be able to restore them.", preferredStyle: UIAlertControllerStyle.Alert)
         presentViewController(alert, animated: true, completion: nil)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
-            print("The user pressed cancel.")
         }))
         alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            print("The user pressed okay.")
             let fetchRequest = NSFetchRequest(entityName: "Image")
             if let fetchResults = try!self.managedObjectContext.executeFetchRequest(fetchRequest) as? [Image] {
                 for (var i=0; i<fetchResults.count; i++) {
@@ -114,7 +112,6 @@ class showMenuController: UIViewController {
     }
     
     func viewHistory() {
-        print("The button was clicked to view the history.")
         self.performSegueWithIdentifier("showHistory", sender: self)
     }
     

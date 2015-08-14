@@ -17,6 +17,12 @@ class showAddressBook: UITableViewController {
     var selectedEmails:Array<String> = []
     var selectBool:Bool = false
     var currentEmails:Array<String> = []
+    
+    var currentSubject:String = ""
+    var currentMessage:String = ""
+    var link:String = ""
+    var videoName:String = ""
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +137,11 @@ class showAddressBook: UITableViewController {
         let navController = segue.destinationViewController as! UINavigationController
         if let destination = navController.topViewController as? emailController {
             destination.moreContacts = self.selectedEmails
+            destination.subjectBody = self.currentSubject
+            destination.messageBody = self.currentMessage
+            destination.added = true
+            destination.link = self.link
+            destination.videoName = self.videoName
         }
     }
     
@@ -138,6 +149,5 @@ class showAddressBook: UITableViewController {
     @IBAction func backButton(sender: UIBarButtonItem) {
         self.performSegueWithIdentifier("sendContact", sender: self)
     }
-    
     
 }

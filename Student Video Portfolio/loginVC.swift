@@ -35,8 +35,6 @@ class loginVC: UIViewController {
         request.timeoutInterval = 70
         
         let task = try!session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
-            print(error)
-            let _:NSError?
             let json = try!NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
             if let _: NSString = json["error"] as? NSString {
                 dispatch_async(dispatch_get_main_queue(), {
@@ -49,7 +47,6 @@ class loginVC: UIViewController {
                 })
             }
             else {
-                print("Successfully logged in!")
                 dispatch_async(dispatch_get_main_queue()) {
                     self.performSegueWithIdentifier("showSuccessfulLogin", sender: self)
                 }
